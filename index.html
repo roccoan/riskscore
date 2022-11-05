@@ -1,43 +1,265 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Form</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="bootstrap.css">
+
+    <title>Sito Vincenzo</title>
 </head>
 <body>
-    
-<h1>Death</h1>
 
-<form id="form" onsubmit="return false">
-  <p>Sex:</p>
-  <input type="radio" id="male" name="sex" value="Male">
-  <label for="male">Male</label><br>
-  <input type="radio" id="female" name="sex" value="Female">
-  <label for="female">Female</label><br>
+    <!--Title-->
+    <div class="container text-center">
+        <h2 class="pt-5">Death Risk and Mace</h2>
+          <p class="lead">Select all of the following to get a risk score.</p>
+    </div>
+    <!--Form-->
+    <div class="container px-5 my-5">
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
 
-  <br>  
+            <!--Sex-->
+            <div class="mb-3">
+                <label class="font-weight-bold form-label d-block">Sex</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="male" type="radio" name="sex" data-sb-validations="required" />
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="female" type="radio" name="sex" data-sb-validations="required" />
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="sex:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
 
-  <p>Age:</p>
-  <input type="radio" id="age1" name="age" value="80">
-  <label for="age1">Less than 80</label><br>
-  <input type="radio" id="age2" name="age" value="80-85">
-  <label for="age2">Between 80 and 85</label><br>  
-  <input type="radio" id="age3" name="age" value="85">
-  <label for="age3">More than 85</label><br><br>
-  <button id="submit" onclick="myFunction()">Submit</button>
-  <button id="reset" onclick="clear(); refresh();">Reset</button>
-</form>
+            <!--Age-->
+            <div class="mb-3">
+                <label class="form-label d-block">Age</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="lessThan80" type="radio" name="age" data-sb-validations="required" />
+                    <label class="form-check-label" for="lessThan80">Less than 80</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="between80And85" type="radio" name="age" data-sb-validations="required" />
+                    <label class="form-check-label" for="between80And85">Between 80 and 85</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="moreThan85" type="radio" name="age" data-sb-validations="required" />
+                    <label class="form-check-label" for="moreThan85">More than 85</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="age:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
 
-<h2>Death Risk:</h2><br>
-<div id="total"></div>
+            <!--BMI-->
+            <div class="mb-3">
+                <label class="form-label d-block">BMI</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="lessThan25" type="radio" name="bmi" data-sb-validations="required" />
+                    <label class="form-check-label" for="lessThan25">Less than 25</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="between25And30" type="radio" name="bmi" data-sb-validations="required" />
+                    <label class="form-check-label" for="between25And305">Between 25 and 30</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="moreThan30" type="radio" name="bmi" data-sb-validations="required" />
+                    <label class="form-check-label" for="moreThan30">More than 30</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="age:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--Diabetes-->
+            <div class="mb-3">
+                <label class="form-label d-block">Diabetes</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="diabetes" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="diabetes" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="diabetes:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--AF-->
+            <div class="mb-3">
+                <label class="form-label d-block">AF</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="af" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="af" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="af:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--NYHA-->
+            <div class="mb-3">
+                <label class="form-label d-block">NYHA 3/4</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="nyha34" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="nyha34" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="nyha34:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--CAD-->
+            <div class="mb-3">
+                <label class="form-label d-block">CAD</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="cad" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="cad" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="cad:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--PAD-->
+            <div class="mb-3">
+                <label class="form-label d-block">PAD</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="pad" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="pad" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="cad:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--COPD-->
+            <div class="mb-3">
+                <label class="form-label d-block">COPD</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="copd" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="copd" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="copd:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--Low Hb-->
+            <div class="mb-3">
+                <label class="form-label d-block">Low Hb (&lt;13.8 g/dL for male and &lt;12.1 g/dL for female)</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="lowHb138GDLForMaleAnd121GDLForFemale" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="lowHb138GDLForMaleAnd121GDLForFemale" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="lowHb138GDLForMaleAnd121GDLForFemale:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--High Creatinine-->
+            <div class="mb-3">
+                <label class="form-label d-block">High creatinine (&gt;1.3 mg/dL for male and &gt;1.1 mg/dL for female)</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="highCreatinine13MgDLForMaleAnd11MgDLForFemale" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="highCreatinine13MgDLForMaleAnd11MgDLForFemale" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="highCreatinine13MgDLForMaleAnd11MgDLForFemale:required">One option is required.</div>
+            </div>
+            <hr class="my-4">
+
+            <!--EF-->
+            <div class="mb-3">
+                <label class="form-label d-block">EF &lt;50%</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="yes" type="radio" name="ef50" data-sb-validations="required" />
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="no" type="radio" name="ef50" data-sb-validations="required" />
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="ef50:required">One option is required.</div>
+            </div>
+
+            <!--Results-->
+            <div class="container">
+                <div class="card-deck mb-3 text-center">
+                    <div class="card mb-4 box-shadow">
+                      <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Click to get Death Risk</h4>
+                      </div>
+                      <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><div id="total"></div><small class="text-muted">%</small></h1>
+                        <button type="button" onclick="deathRisk()" class="btn btn-lg btn-block btn-primary">Death Risk</button>
+                      </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                      <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Click to get MACE</h4>
+                      </div>
+                      <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><div id="total"></div><small class="text-muted">%</small></h1>
+                        <button type="button" class="btn btn-lg btn-block btn-primary">MACE</button>
+                      </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                      <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Click to clear the values</h4>
+                      </div>
+                      <div class="card-body">
+                        <button type="button" onclick="clear(); refresh();" class="btn btn-lg btn-block btn-outline-primary">CLEAR</button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+
+
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                    <p>To activate this form, sign up at</p>
+                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+            </div>
+            <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">Error sending message!</div>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
 
 </body>
 
 <script>
 
-    function myFunction() {
+    function deathRisk() {
         let totalScore = 0;
         let riskScore = 0;
 
@@ -179,4 +401,5 @@
     }
 
 </script>
+
 </html>
