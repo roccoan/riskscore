@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Form</title>
+</head>
+<body>
+    
+<h1>Death</h1>
+
+<form id="form" onsubmit="return false">
+  <p>Sex:</p>
+  <input type="radio" id="male" name="sex" value="Male">
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="sex" value="Female">
+  <label for="female">Female</label><br>
+
+  <br>  
+
+  <p>Age:</p>
+  <input type="radio" id="age1" name="age" value="80">
+  <label for="age1">Less than 80</label><br>
+  <input type="radio" id="age2" name="age" value="80-85">
+  <label for="age2">Between 80 and 85</label><br>  
+  <input type="radio" id="age3" name="age" value="85">
+  <label for="age3">More than 85</label><br><br>
+  <button id="submit" onclick="myFunction()">Submit</button>
+  <button id="reset" onclick="clear(); refresh();">Reset</button>
+</form>
+
+<h2>Death Risk:</h2><br>
+<div id="total"></div>
+
+</body>
+
+<script>
+
+    function myFunction() {
+        let totalScore = 0;
+        let riskScore = 0;
+
+        let sex = document.querySelector('input[name="sex"]:checked').value;
+        console.log(sex)
+        if (sex == "Male") {
+            let sexScore = 2.21;
+            totalScore += sexScore;
+        } else {
+            let sexScore = 0;
+            totalScore += sexScore;
+        }
+
+        let age = document.querySelector('input[name="age"]:checked').value;
+        console.log(age)
+        if (age == "80") {
+            let ageScore = 0;
+            totalScore += ageScore;
+        } else if (age == "80-85") {
+            let ageScore = 3.10;
+            totalScore += ageScore;
+        } else {
+            let ageScore = 7.50;
+            totalScore += ageScore;
+        }
+
+        if (totalScore < 2.49) {
+            riskScore = 0;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 4.99){
+            riskScore = 2.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 7.49){
+            riskScore = 4.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 9.99){
+            riskScore = 6;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 12.49){
+            riskScore = 6.4;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 14.99){
+            riskScore = 6.8;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 17.49){
+            riskScore = 7.2;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 19.99){
+            riskScore = 7.6;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 22.49){
+            riskScore = 8;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 24.99){
+            riskScore = 8.75;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 27.49){
+            riskScore = 9.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 29.99){
+            riskScore = 10.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 32.49){
+            riskScore = 11;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 34.99){
+            riskScore = 11.75;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 37.49){
+            riskScore = 12.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 39.99){
+            riskScore = 13.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 42.49){
+            riskScore = 14;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 44.99){
+            riskScore = 14.75;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 47.49){
+            riskScore = 15.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 49.99){
+            riskScore = 16.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 52.49){
+            riskScore = 17;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 54.99){
+            riskScore = 18;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 57.49){
+            riskScore = 19;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 59.99){
+            riskScore = 20;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 62.49){
+            riskScore = 21;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 64.99){
+            riskScore = 22.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 67.49){
+            riskScore = 24;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 69.99){
+            riskScore = 25.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 72.49){
+            riskScore = 27;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 74.99){
+            riskScore = 29;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 77.49){
+            riskScore = 31;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 77.99){
+            riskScore = 33;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else {
+            riskScore = 35;
+            riskScore = riskScore.toFixed(2)+"%";
+        }
+        
+
+        document.getElementById('total').innerHTML = riskScore.toString();
+    }
+
+
+    function clear() {
+        HTMLFormElement.reset()
+    }
+
+    function refresh () {
+        window.location.reload(true);  
+    }
+
+</script>
+</html>
