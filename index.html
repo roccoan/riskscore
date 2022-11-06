@@ -7,15 +7,14 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="bootstrap.css">
 
-    <title>Major Adverse Cardiovascular Events Risk Model
+    <title>TRITAVI Score
     </title>
 </head>
 <body>
 
     <!--Title-->
     <div class="container text-center">
-        <h2 class="pt-5">MACE Model</h2>
-          <p class="lead">Select all of the following to get a death and MACE risk score.</p>
+        <h2 class="pt-5">TRITAVI Score</h2>
     </div>
 
     <!--Form-->
@@ -216,18 +215,18 @@
                     <!--Death Risk Score-->
                     <div class="card mb-4 box-shadow">
                       <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Click to get Death Risk</h4>
+                        <h4 class="my-0 font-weight-normal">1-year all-cause death</h4>
                       </div>
                       <div class="card-body">
                         <h1 class="card-title pricing-card-title"><div id="deathScore"></div></h1>
-                        <button type="button" onclick="deathRisk()" class="btn btn-lg btn-block btn-primary">Death Risk</button>
+                        <button type="button" onclick="deathRisk()" class="btn btn-lg btn-block btn-primary">Death</button>
                       </div>
                     </div>
 
                     <!--Mace-->
                     <div class="card mb-4 box-shadow">
                       <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Click to get MACE</h4>
+                        <h4 class="my-0 font-weight-normal">1-year MACE</h4>
                       </div>
                       <div class="card-body">
                         <h1 class="card-title pricing-card-title"><div id="maceScore"></div></h1>
@@ -502,10 +501,10 @@
             let bmiScore = 0;
             totalScore += bmiScore;
         } else if (bmi == "25-30") {
-            let bmiScore = 3.10;
+            let bmiScore = 3.75;
             totalScore += bmiScore;
         } else {
-            let bmiScore = 7.50;
+            let bmiScore = 6.50;
             totalScore += bmiScore;
         }
 
