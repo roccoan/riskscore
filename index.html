@@ -7,14 +7,15 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="bootstrap.css">
 
-    <title>Sito Vincenzo</title>
+    <title>Major Adverse Cardiovascular Events Risk Model
+    </title>
 </head>
 <body>
 
     <!--Title-->
     <div class="container text-center">
-        <h2 class="pt-5">Death Risk and Mace</h2>
-          <p class="lead">Select all of the following to get a risk score.</p>
+        <h2 class="pt-5">MACE Model</h2>
+          <p class="lead">Select all of the following to get a death and MACE risk score.</p>
     </div>
 
     <!--Form-->
@@ -59,16 +60,16 @@
             <div class="mb-3">
                 <label class="form-label d-block">BMI</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="lessThan25" type="radio" name="bmi" data-sb-validations="required" />
-                    <label class="form-check-label" for="lessThan25">Less than 25</label>
+                    <input class="form-check-input" id="25" type="radio" name="bmi" data-sb-validations="required" />
+                    <label class="form-check-label" for="25">Less than 25</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="between25And30" type="radio" name="bmi" data-sb-validations="required" />
-                    <label class="form-check-label" for="between25And305">Between 25 and 30</label>
+                    <input class="form-check-input" id="25-30" type="radio" name="bmi" data-sb-validations="required" />
+                    <label class="form-check-label" for="25-30">Between 25 and 30</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="moreThan30" type="radio" name="bmi" data-sb-validations="required" />
-                    <label class="form-check-label" for="moreThan30">More than 30</label>
+                    <input class="form-check-input" id="30" type="radio" name="bmi" data-sb-validations="required" />
+                    <label class="form-check-label" for="30">More than 30</label>
                 </div>
                 <div class="invalid-feedback" data-sb-feedback="age:required">One option is required.</div>
             </div>
@@ -218,7 +219,7 @@
                         <h4 class="my-0 font-weight-normal">Click to get Death Risk</h4>
                       </div>
                       <div class="card-body">
-                        <h1 class="card-title pricing-card-title"><div id="total"></div><small class="text-muted">%</small></h1>
+                        <h1 class="card-title pricing-card-title"><div id="deathScore"></div></h1>
                         <button type="button" onclick="deathRisk()" class="btn btn-lg btn-block btn-primary">Death Risk</button>
                       </div>
                     </div>
@@ -229,7 +230,7 @@
                         <h4 class="my-0 font-weight-normal">Click to get MACE</h4>
                       </div>
                       <div class="card-body">
-                        <h1 class="card-title pricing-card-title"><div id="total"></div><small class="text-muted">%</small></h1>
+                        <h1 class="card-title pricing-card-title"><div id="maceScore"></div></h1>
                         <button type="button" onclick="mace();" class="btn btn-lg btn-block btn-primary">MACE</button>
                       </div>
                     </div>
@@ -328,6 +329,15 @@
             totalScore += cadScore;
         }
 
+        let copd = document.querySelector('input[name="copd"]:checked').id;
+        if (copd == "yes") {
+            let copdScore = 6.55;
+            totalScore += copdScore;
+        } else {
+            let copdScore = 0;
+            totalScore += copdScore;
+        }
+
         let lowhb = document.querySelector('input[name="lowhb"]:checked').id;
         if (lowhb == "yes") {
             let lowhbScore = 7.75;
@@ -358,107 +368,347 @@
         /*Total Death Risk Score*/
         if (totalScore < 2.49) {
             riskScore = 0;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 4.99){
             riskScore = 2.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 7.49){
             riskScore = 4.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 9.99){
             riskScore = 6;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 12.49){
             riskScore = 6.4;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 14.99){
             riskScore = 6.8;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 17.49){
             riskScore = 7.2;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 19.99){
             riskScore = 7.6;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 22.49){
             riskScore = 8;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 24.99){
             riskScore = 8.75;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 27.49){
             riskScore = 9.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 29.99){
             riskScore = 10.25;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 32.49){
             riskScore = 11;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 34.99){
             riskScore = 11.75;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 37.49){
             riskScore = 12.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 39.99){
             riskScore = 13.25;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 42.49){
             riskScore = 14;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 44.99){
             riskScore = 14.75;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 47.49){
             riskScore = 15.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 49.99){
             riskScore = 16.25;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 52.49){
             riskScore = 17;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 54.99){
             riskScore = 18;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 57.49){
             riskScore = 19;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 59.99){
             riskScore = 20;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 62.49){
             riskScore = 21;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 64.99){
             riskScore = 22.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 67.49){
             riskScore = 24;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 69.99){
             riskScore = 25.5;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 72.49){
             riskScore = 27;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 74.99){
             riskScore = 29;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 77.49){
             riskScore = 31;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else if (totalScore < 77.99){
             riskScore = 33;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         } else {
             riskScore = 35;
-            riskScore = riskScore.toFixed(2);
+            riskScore = riskScore.toFixed(2)+"%";
         }
         
 
-        document.getElementById('total').innerHTML = riskScore.toString();
+        document.getElementById('deathScore').innerHTML = riskScore.toString();
+    }
+
+    function mace() {
+        let totalScore = 0;
+        let riskScore = 0;
+
+        /*MACE Attributes*/
+        let sex = document.querySelector('input[name="sex"]:checked').id;
+        if (sex == "male") {
+            let sexScore = 1;
+            totalScore += sexScore;
+        } else {
+            let sexScore = 0;
+            totalScore += sexScore;
+        }
+
+        let age = document.querySelector('input[name="age"]:checked').id;
+        if (age == "80") {
+            let ageScore = 0;
+            totalScore += ageScore;
+        } else if (age == "80-85") {
+            let ageScore = 2.5;
+            totalScore += ageScore;
+        } else {
+            let ageScore = 8.75;
+            totalScore += ageScore;
+        }
+
+        let bmi = document.querySelector('input[name="bmi"]:checked').id;
+        if (bmi == "30") {
+            let bmiScore = 0;
+            totalScore += bmiScore;
+        } else if (bmi == "25-30") {
+            let bmiScore = 3.10;
+            totalScore += bmiScore;
+        } else {
+            let bmiScore = 7.50;
+            totalScore += bmiScore;
+        }
+
+        let diabetes = document.querySelector('input[name="diabetes"]:checked').id;
+        if (diabetes == "yes") {
+            let diabetesScore = 8.5;
+            totalScore += diabetesScore;
+        } else {
+            let diabetesScore = 0;
+            totalScore += diabetesScore;
+        }
+
+        let af = document.querySelector('input[name="af"]:checked').id;
+        if (af == "yes") {
+            let afScore = 6.75;
+            totalScore += afScore;
+        } else {
+            let afScore = 0;
+            totalScore += afScore;
+        }
+
+        let nyha34 = document.querySelector('input[name="nyha34"]:checked').id;
+        if (nyha34 == "yes") {
+            let nyha34Score = 6.75;
+            totalScore += nyha34Score;
+        } else {
+            let nyha34Score = 0;
+            totalScore += nyha34Score;
+        }
+
+        let cad = document.querySelector('input[name="cad"]:checked').id;
+        if (cad == "yes") {
+            let cadScore = 3.5;
+            totalScore += cadScore;
+        } else {
+            let cadScore = 0;
+            totalScore += cadScore;
+        }
+
+        let pad = document.querySelector('input[name="pad"]:checked').id;
+        if (pad == "yes") {
+            let padScore = 5.3;
+            totalScore += padScore;
+        } else {
+            let padScore = 0;
+            totalScore += padScore;
+        }
+
+        let copd = document.querySelector('input[name="copd"]:checked').id;
+        if (copd == "yes") {
+            let copdScore = 10;
+            totalScore += copdScore;
+        } else {
+            let copdScore = 0;
+            totalScore += copdScore;
+        }
+
+        let lowhb = document.querySelector('input[name="lowhb"]:checked').id;
+        if (lowhb == "yes") {
+            let lowhbScore = 6.3;
+            totalScore += lowhbScore;
+        } else {
+            let lowhbScore = 0;
+            totalScore += lowhbScore;
+        }
+
+        let hicre = document.querySelector('input[name="hicre"]:checked').id;
+        if (hicre == "yes") {
+            let hicreScore = 8.10;
+            totalScore += hicreScore;
+        } else {
+            let hicreScore = 0;
+            totalScore += hicreScore;
+        }
+
+        let ef50 = document.querySelector('input[name="ef50"]:checked').id;
+        if (ef50 == "yes") {
+            let ef50Score = 2.8;
+            totalScore += ef50Score;
+        } else {
+            let ef50Score = 0;
+            totalScore += ef50Score;
+        }
+
+        /*Total MACE Score*/
+        if (totalScore < 1.99) {
+            riskScore = 0;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 3.99){
+            riskScore = 5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 5.99){
+            riskScore = 5.42;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 7.99){
+            riskScore = 5.83;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 9.99){
+            riskScore = 6.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 11.99){
+            riskScore = 6.67;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 13.99){
+            riskScore = 7.08;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 15.99){
+            riskScore = 7.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 17.99){
+            riskScore = 7.92;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 19.99){
+            riskScore = 8.33;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 21.99){
+            riskScore = 8.75;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 23.99){
+            riskScore = 9.17;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 25.99){
+            riskScore = 9.58;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 27.99){
+            riskScore = 10;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 29.99){
+            riskScore = 10.71;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 39.99){
+            riskScore = 13.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 31.99){
+            riskScore = 11.43;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 33.99){
+            riskScore = 12.14;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 35.99){
+            riskScore = 12.86;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 37.99){
+            riskScore = 13.57;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 39.99){
+            riskScore = 14.29;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 41.99){
+            riskScore = 15;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 43.99){
+            riskScore = 16;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 45.99){
+            riskScore = 17;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 47.99){
+            riskScore = 18;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 49.99){
+            riskScore = 19;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 51.99){
+            riskScore = 20;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 53.99){
+            riskScore = 21.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 55.99){
+            riskScore = 22.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 57.99){
+            riskScore = 23.75;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 59.99){
+            riskScore = 25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 61.99){
+            riskScore = 26.25;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 63.99){
+            riskScore = 27.5;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 65.99){
+            riskScore = 28.75;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 67.99){
+            riskScore = 30;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 69.99){
+            riskScore = 31.67;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else if (totalScore < 71.99){
+            riskScore = 33.33;
+            riskScore = riskScore.toFixed(2)+"%";
+        } else {
+            riskScore = 35;
+            riskScore = riskScore.toFixed(2)+"%";
+        }
+        
+
+        document.getElementById('maceScore').innerHTML = riskScore.toString();
     }
 
 
